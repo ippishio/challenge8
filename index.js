@@ -12,6 +12,8 @@ const near = new nearApi.Near({
 const login = document.getElementById("login");
 const wallet = new nearApi.WalletConnection(near, 'my-app');
 const cancel = document.getElementById("cancel");
+const progress = document.getElementById("totalprogress");
+const deposit = document.getElementById("deposit");
 var canPlay= false;
 const ftContract = new nearApi.Contract(wallet.account(), 'wrap.testnet', {
     changeMethods: ['ft_transfer_call', 'near_deposit'],
@@ -24,10 +26,10 @@ const roketo = new nearApi.Contract(wallet.account(), 'streaming-r-v2.dcversus.t
 const provider = new providers.JsonRpcProvider(
     "https://archival-rpc.testnet.near.org"
   );
-  const TX_HASH = new URLSearchParams(window.location.search).get('transactionHashes');
+
   var lastStream;
 if (!wallet.isSignedIn()) {
-    login.textContent = "login bitch";
+    login.textContent = "login in NEAR";
 } else {
     const roketoAccount = await roketo.get_account({
         "account_id": wallet.getAccountId()
@@ -59,27 +61,9 @@ if (!wallet.isSignedIn()) {
     });
     console.log("total game pay streams: "+count);
 }
-    if(TX_HASH) {
-        if(!(new URLSearchParams(window.location.search).get('errorCode'))) {
-           console.log("no error");
-          const result = await provider.txStatus(TX_HASH, wallet.getAccountId().toString());
-          console.log(window.atob(result['status']['SuccessValue']));
-         // const randID = eval(window.atob(result['status']['SuccessValue']))[0];
-          if(window.atob(result['status']['SuccessValue']) == '') {
-           
-          } else if(window.atob(result['status']['SuccessValue']) == '"0"') {
-              document.getElementById("game").style.visibility = "visible";
-              login.style.visibility = "hidden";
 
-          }
-        } else {
-          console.log("error");
-         }
-     
-       console.log(TX_HASH);
-       }
 }
-document.getElementById("deposit").addEventListener('click', () => {
+deposit.addEventListener('click', () => {
     if(wallet.isSignedIn()) {
         ftContract.near_deposit({}, 200000000000000, '10000000000000000000000000');
     } else {
@@ -98,24 +82,37 @@ function UpdateTotal() {
         canPlay = false;
     }
     document.getElementById("total").textContent = alreadyStreamedAmount+"/1 N"
+    progress.value = alreadyStreamedAmount
 }
 if(lastStream){
-    if(alreadyStreamedAmount < 1) {
+    console.log(alreadyStreamedAmount);
+    if(!lastStream.status.Finished) {
+        console.log("streamed: " + alreadyStreamedAmount)
+    if(alreadyStreamedAmount < 1 | !alreadyStreamedAmount) {
     console.log("laststream")
   if(lastStream.status != "Paused") {
   var t = setInterval(UpdateTotal,1000);
   cancel.style.visibility = "visible";
     console.log("active stream");
+    canPlay = true;
 } } else {
-    document.getElementById("total").textContent = "Game buyed!";
+    document.getElementById("total").textContent = "Game purchased!";
+    progress.value = 1;
+    progress.style.accentColor = "#15e64c";
     clearInterval(t);
     canPlay = true;
 
 } 
-}
+    } else {
+        if(wallet.isSignedIn()) {
+            deposit.style.visibility = "visible";
+        }
+      }
+} 
 if(canPlay) {
-    login.textContent = "Play Game";
-}
+    login.textContent = "Play Game!";
+ 
+} 
 cancel.addEventListener('click', () => {
     roketo.stop_stream({"stream_id":lastStream.id},200000000000000, 1);
 })
@@ -131,7 +128,7 @@ login.addEventListener('click', () => {
                     request: {
                         "owner_id": "ippishio.testnet",
                         "receiver_id": "bebrab.testnet",
-                        "tokens_per_sec": 100000000000000000000, // 1 month for 1 NEAR
+                        "tokens_per_sec": 990000000000000000000, // 1 month for 1 NEAR
                         "description": "gamesmartpay",
                         "is_auto_start_enabled": true,
                     }

@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <title>Roketo challenge</title>
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/near-api-js@0.41.0/dist/near-api-js.min.js"></script>
     <script type="module" src="index.js"></script>
-    <h1>Game demo stremaing</h1>
-    <h2>ЕЕЕЕЕЕМААААА РАЗРАБОТКА КАБАНА ЕЕЕЕЕЕМААААА </h2>
-    <h2>ХОЧУ РАЗРАБОТАТЬ СЕБЕ АНУСИК)))))))))) </h2>
+    <h1>Game purchase stream</h1>
     <h3 id="game" style="visibility: hidden">*game plaing*</h3>    
-    <button id="login">Buy a game</button>
-    <button id="deposit">deposit</button>
-    <button id="logout">logout</button>
+    <button id="deposit" style="visibility: hidden;">Deposit</button>
+    <button id="logout">Logout</button>
+    <button id="login">Start stream</button>
     <button id="cancel" style="visibility: hidden">Cancel payment</button>
-    <a id="total"></a>
+    <div id="preview">
+        <img src="game_preview.png" style="width: 60%">
+        <h2>Some platformer</h2>
+    </div>
+    <div id="progress"> 
+    <progress id="totalprogress" max ="1" value="0"></progress> <a id="total" style="display: table-cell;vertical-align: middle;font-size: 30px;left:100%;position: relative;"></a>
+    </div>
+    <a style="position:absolute; bottom:5%; left:2%;">ippishio#8483</a>
 </body>
 </html>

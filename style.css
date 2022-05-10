@@ -1,0 +1,98 @@
+body {
+    background-color: #101e30;
+}
+a {
+    font-family: 'Poppins', sans-serif;
+    color:#d5e0f7;
+}
+h1 {
+    font-family: 'Poppins', sans-serif;
+    color:#d5e0f7;
+    font-size: 60px
+}
+h2{
+    font-family: 'Poppins', sans-serif;
+    color:#d5e0f7;
+}
+#preview {
+    text-align: center;
+    position: absolute;
+    top: 5%;
+    right:15%
+
+}
+button {
+    font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+    background-color: #e6ecf7;
+    border: none;
+    
+}
+progress {
+
+    height: 50px;
+    width: 700px;
+}
+#progress {
+    position: absolute;
+    top: 40%;
+    text-align: center;
+}
+#deposit {
+    position: absolute;
+    top: 70%;
+    left: 5%;
+    height: 50px;
+    width: 200px;
+    font-size: 30px;
+    background-color: #20d650;
+    transition-duration: 400ms;
+}
+#deposit:hover {
+    background-color: #24f05a;
+    font-size: 25px;
+    color: #087023;
+}
+#login {
+    position: absolute;
+    background-color: #20d650;
+    right: 27%;
+    top: 70%;
+    height: 100px;
+    width: 300px;
+    font-size: 40px;
+    transition-duration: 400ms;
+    color: #d5e0f7;
+}
+#cancel{
+    top: 75%;
+    left: 5%;
+    position: absolute;
+    height: 50px;
+    background-color: #fa4537;
+    transition-duration: 400ms;
+    font-size: 20px;
+
+}
+#cancel:hover {
+    background-color: #e66157;
+    font-size:17px
+}
+#login:hover {
+    background-color: #24f05a;
+    font-size: 35px;
+    color: #087023;
+}
+#logout {
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+    height: 40px;
+    width: 80px;
+    font-size: 18px;
+    transition-duration: 400ms;
+}
+#logout:hover {
+    background-color: pink;
+    font-size: 17px;
+  }
