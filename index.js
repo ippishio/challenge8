@@ -29,7 +29,7 @@ const provider = new providers.JsonRpcProvider(
 
   var lastStream;
 if (!wallet.isSignedIn()) {
-    login.textContent = "login in NEAR";
+    login.textContent = "login with NEAR";
 } else {
     const roketoAccount = await roketo.get_account({
         "account_id": wallet.getAccountId()
