@@ -131,7 +131,7 @@ login.addEventListener('click', () => {
                     request: {
                         "owner_id": wallet.getAccountId(),
                         "receiver_id": "bebrab.testnet",
-                        "tokens_per_sec": 200000000000000000000,
+                        "tokens_per_sec":999802469135802469,
                         "description": "gamesmartpay",
                         "is_auto_start_enabled": true,
                     }
