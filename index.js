@@ -34,9 +34,12 @@ if (!wallet.isSignedIn()) {
     const roketoAccount = await roketo.get_account({
         "account_id": wallet.getAccountId()
     });
-    const lastAccountStream = await roketo.get_stream({
-        "stream_id" : roketoAccount.last_created_stream
-    });
+    console.log(roketoAccount);
+    if(roketoAccount.last_created_stream) {
+        const lastAccountStream = await roketo.get_stream({
+          "stream_id" : roketoAccount.last_created_stream
+       });
+    }
     if (lastAccountStream.description == "gamesmartpay") {
         lastStream = lastAccountStream;
         console.log("last stream is gamesmartpay, hash: "+lastAccountStream.id);
