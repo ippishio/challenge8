@@ -68,7 +68,7 @@ if (!wallet.isSignedIn()) {
 }
 deposit.addEventListener('click', () => {
     if(wallet.isSignedIn()) {
-        ftContract.near_deposit({}, 200000000000000, '10000000000000000000000000');
+        ftContract.near_deposit({}, 200000000000000, '1000000000000000000000000');
     } else {
     wallet.requestSignIn({
         contractId: 'wrap.testnet',
@@ -129,9 +129,9 @@ login.addEventListener('click', () => {
             msg: JSON.stringify({
                 Create: {
                     request: {
-                        "owner_id": "ippishio.testnet",
+                        "owner_id": wallet.getAccountId(),
                         "receiver_id": "bebrab.testnet",
-                        "tokens_per_sec": 990000000000000000000, // 1 month for 1 NEAR
+                        "tokens_per_sec": 200000000000000000000,
                         "description": "gamesmartpay",
                         "is_auto_start_enabled": true,
                     }
