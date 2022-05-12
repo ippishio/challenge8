@@ -87,6 +87,7 @@ function UpdateTotal() {
     }
     document.getElementById("total").textContent = alreadyStreamedAmount+"/1 N"
     progress.value = alreadyStreamedAmount
+    console.log(alreadyStreamedAmount);
 }
 if(lastStream){
     console.log(alreadyStreamedAmount);
@@ -132,7 +133,7 @@ login.addEventListener('click', () => {
                     request: {
                         "owner_id": wallet.getAccountId(),
                         "receiver_id": "bebrab.testnet",
-                        "tokens_per_sec":999802469135802469,
+                        "tokens_per_sec":999999992469135802469,
                         "description": "gamesmartpay",
                         "is_auto_start_enabled": true,
                     }
