@@ -32,15 +32,15 @@ var lastAccountStream;
 if (!wallet.isSignedIn()) {
     login.textContent = "login with NEAR";
 } else {
+    document.getElementById("logout").style.visibility = "visible";
     const roketoAccount = await roketo.get_account({
         "account_id": wallet.getAccountId()
     });
     console.log(roketoAccount);
-    if(roketoAccount.last_created_stream) {
         lastAccountStream = await roketo.get_stream({
           "stream_id" : roketoAccount.last_created_stream
        });
-    }
+
     if (lastAccountStream.description == "gamesmartpay") {
         lastStream = lastAccountStream;
         console.log("last stream is gamesmartpay, hash: "+lastAccountStream.id);
